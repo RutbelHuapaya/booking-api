@@ -55,9 +55,9 @@ class SrvBookTest {
         DtoInBook request = EntityStubs.getInstance().getDtoInBook();
         when(apiClient.validateDiscount(any(DtoInDiscount.class))).thenReturn(false);
 
-        BusinessException thrown = assertThrows(BusinessException.class, () -> {
-            srvBook.createBook(request);
-        });
+        BusinessException thrown = assertThrows(BusinessException.class, () ->
+                srvBook.createBook(request)
+        );
 
         assertEquals(400, thrown.getStatusCode());
         assertEquals("Invalid discount", thrown.getMessage());
